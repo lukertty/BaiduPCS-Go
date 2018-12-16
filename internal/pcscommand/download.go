@@ -234,6 +234,7 @@ func checkFileValid(filePath string, fileInfo *baidupcs.FileDirectory) error {
 	md5Str := hex.EncodeToString(f.MD5)
 
 	if md5Str != fileInfo.MD5 { // md5不一致
+		return nil
 		// 检测是否为违规文件
 		if pcsdownload.IsSkipMd5Checksum(f.Length, md5Str) {
 			return ErrDownloadFileBanned
